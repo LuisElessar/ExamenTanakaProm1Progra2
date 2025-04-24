@@ -8,5 +8,6 @@ namespace ExamenTanakaProm1Progra2
 {
     internal interface IInterfaz
     {
+        void Interactuar();
     }
 }
