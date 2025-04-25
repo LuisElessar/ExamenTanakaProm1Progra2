@@ -8,21 +8,23 @@ namespace ExamenTanakaProm1Progra2
 {
     internal class Animales : Granja
     {
-        public string Sonido { get; private set; }
-
-        public Animales(string nombre, string sonido) : base(nombre)
+        private int diasSinComer;
+        private int vecesAlimentado;
+        public bool EstaVivo => diasSinComer < 3;
+        public bool ListoParaVenta => vecesAlimentado >= 3;
+        public Animales(string nombre) : base(nombre)
         {
-            Sonido = sonido;
+            diasSinComer = 0;
+            vecesAlimentado = 0;
         }
-
-        public override void Info()
+        public void Interactuar() => Alimentar();
+        private void Alimentar()
         {
-            Console.WriteLine($"Animal: {Nombre}, Sonido: {Sonido}");
+            diasSinComer = 0;
+            vecesAlimentado++;
+            Console.WriteLine($"Has alimentado {Nombre}. Veces alimentado: {vecesAlimentado}");
         }
-
-        public void HacerSonido()
-        {
-            Console.WriteLine($"{Nombre} hace: {Sonido}");
-        }
+        public void PasarDia() => diasSinComer++;
+        public override void Info() => Console.WriteLine($"Animal: {Nombre}, Días sin comer: {diasSinComer}, Veces alimentado: {vecesAlimentado}");
     }
 }

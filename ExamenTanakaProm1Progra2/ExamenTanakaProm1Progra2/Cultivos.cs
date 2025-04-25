@@ -10,17 +10,7 @@ namespace ExamenTanakaProm1Progra2
     {
         public int DiasParaCosechar { get; private set; }
         public bool ListoParaCosecha => DiasParaCosechar <= 0;
-
-        public Cultivos(string nombre, int dias) : base(nombre)
-        {
-            DiasParaCosechar = dias;
-        }
-
-        public override void Info()
-        {
-            Console.WriteLine($"Cultivo: {Nombre}, Días para cosechar: {DiasParaCosechar}");
-        }
-
+        public Cultivos(string nombre, int dias) : base(nombre) => DiasParaCosechar = dias;
         public void Interactuar()
         {
             if (DiasParaCosechar > 0)
@@ -28,10 +18,8 @@ namespace ExamenTanakaProm1Progra2
                 DiasParaCosechar--;
                 Console.WriteLine($"Has regado {Nombre}. Días restantes: {DiasParaCosechar}");
             }
-            else
-            {
-                Console.WriteLine($"{Nombre} ya está listo para cosechar.");
-            }
+            else Console.WriteLine($"{Nombre} ya está listo para cosechar.");
         }
+        public override void Info() => Console.WriteLine($"Cultivo: {Nombre}, Días restantes: {DiasParaCosechar}");
     }
 }
